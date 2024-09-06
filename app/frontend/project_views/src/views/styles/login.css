@@ -33,29 +33,6 @@
     align-items: center;
     margin-bottom: 1.5rem;
   }
-
-  .inputs-session label {
-    text-align: left;
-    margin-bottom: 0.3rem;
-    font-size: 1rem;
-    color: #000; /* Letras pretas */
-  }
-
-  .inputs-session input {
-    width: 100%;
-    max-width: 300px;
-    padding: 0.75rem;
-    border-radius: 0.5rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .inputs-session input:focus {
-    border-color: #007bff; /* Azul ao focar */
-    outline: none;
-  }
   
   button {
     padding: 0.75rem 2.5rem;

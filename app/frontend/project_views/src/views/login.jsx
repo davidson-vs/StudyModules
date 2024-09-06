@@ -3,7 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import './styles/login.css'
+
 import devImg from '../static/images/dev-img.png'
+import InputComponent from "../components/input";
 
 
 const verifyUserCredential = (user, pwd) =>{
@@ -24,16 +26,29 @@ const Login = (props) => {
                                         <img src={devImg} alt="Logo do projeto" />
                                 </div>
                                 <div className="inputs-session">
-                                        <div className="input-block">
-                                                <label htmlFor="username-login">Usuário</label>
-                                                <input type="text" name="username-login" id="user-login" placeholder="digite seu nome..." value={userValue} onChange={(e)=>setUserValue(e.target.value)} required/>
-                                        </div>
+                                        <InputComponent
+                                                labelText="Usuário" 
+                                                type="text"
+                                                name="username-login"
+                                                id="user-login"
+                                                placeholder="digite seu nome..."
+                                                value={userValue} 
+                                                onChange={(e)=>setUserValue(e.target.value)}
+                                                is_required={true}
+                                        />
                                         
                                         <br />
-                                        <div className="input-block">
-                                                <label htmlFor="password-login">Senha</label>
-                                                <input type="password" name="password-login" id="pwd-login" placeholder="digite sua senha..." value={pwdValue} onChange={(e)=>setPwdValue(e.target.value)} required/>
-                                        </div>
+
+                                        <InputComponent
+                                                        labelText="Senha" 
+                                                        type="password"
+                                                        name="password-login"
+                                                        id="pwd-login"
+                                                        placeholder="digite sua senha..."
+                                                        value={pwdValue} 
+                                                        onChange={(e)=>setPwdValue(e.target.value)}
+                                                        is_required={true}
+                                                />
                                         
                                         
                                 </div>
