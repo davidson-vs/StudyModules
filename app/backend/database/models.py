@@ -13,17 +13,17 @@ class BaseModel(Base):
     DtCriacao = Column(DateTime, default=func.now(), server_default=text('CURRENT_TIMESTAMP'), nullable=True)
     DtAtualizacao = Column(DateTime, default=func.now(), server_default=text('CURRENT_TIMESTAMP'),  onupdate=func.now(), nullable=False)
 
-class Empresas(BaseModel):
+class Empresa(BaseModel):
 
-    __tablename__ = 'TbEmpresas'
+    __tablename__ = 'TbEmpresa'
     NmEmpresa = Column(String(50), unique=True, nullable=False)
 
     # Relação com Funcionarios
-    funcionarios = relationship('Funcionarios', back_populates='empresa')
+    funcionarios = relationship('Funcionario', back_populates='empresa')
 
-class Funcionarios(BaseModel):
+class Funcionario(BaseModel):
 
-    __tablename__ = 'TbFuncionarios'
+    __tablename__ = 'TbFuncionario'
     NmFuncionario = Column(String(50), nullable=False)
     Area = Column(String(50), nullable=False)
     Email = Column(String(50), nullable=False, unique=True)
@@ -31,8 +31,8 @@ class Funcionarios(BaseModel):
     IdGestor = Column(Integer, nullable=True)
     
     # Definindo a chave estrangeira que referencia TbEmpresas.Id
-    IdEmpresa = Column(Integer, ForeignKey('TbEmpresas.Id'), nullable=False)
+    IdEmpresa = Column(Integer, ForeignKey('TbEmpresa.Id'), nullable=False)
     
     # Relacionamento com a tabela Empresas
-    empresa = relationship('Empresas', back_populates='funcionarios')
+    empresa = relationship('Empresa', back_populates='funcionarios')
 
