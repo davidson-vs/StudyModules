@@ -1,7 +1,7 @@
 from sqlalchemy.sql import text
 from sqlalchemy.orm import relationship
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, func
+from sqlalchemy import Column, Integer, String, DateTime, ForeignKey, Boolean, func, Text
 
 
 Base = declarative_base()
@@ -27,6 +27,7 @@ class Funcionario(BaseModel):
     NmFuncionario = Column(String(50), nullable=False)
     Area = Column(String(50), nullable=False)
     Email = Column(String(50), nullable=False, unique=True)
+    Senha = Column(Text, nullable=False)
     IsGestor = Column(Boolean, default=False, nullable=False)
     IdGestor = Column(Integer, nullable=True)
     

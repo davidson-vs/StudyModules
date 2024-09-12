@@ -2,14 +2,17 @@ from fastapi import FastAPI, HTTPException
 
 from database.config import test_db_connection, engine
 from database.models import Base
-
+from routers.employee import router as employee_routers
 
 app = FastAPI(
     description="""
-        API realizada para realizar as operações necessárias com o banco 
-        durante meus estudos engenharia de software e arquitetura de sistemas.
+        API simples com fastapi para ajudar nos meus estudos 
+        sobre engenharia de software e arquitetura de sistemas.
     """
     )
+
+# adicionando as rotas do módulos do projeto
+app.include_router(employee_routers)
 
 @app.on_event('startup')
 async def startup_application():

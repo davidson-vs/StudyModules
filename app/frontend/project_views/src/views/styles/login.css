@@ -16,6 +16,7 @@
     height: 80vh;
     width: 30vw;
     border-radius: 2rem;
+    margin-top: 3rem;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }

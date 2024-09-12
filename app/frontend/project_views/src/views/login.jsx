@@ -19,48 +19,45 @@ const Login = (props) => {
         let [pwdValue, setPwdValue] = useState('')
 
         return (
-                <form onSubmit={verifyUserCredential(userValue, pwdValue)}>
-                        <div className="login-container">
+                <form onSubmit={verifyUserCredential(userValue, pwdValue)} className="login-container">
+                        <div>
+                                <img src={devImg} alt="Logo do projeto" />
+                        </div>
+                        <div className="inputs-session">
+                                <InputComponent
+                                        labelText="Usuário" 
+                                        type="text"
+                                        name="username-login"
+                                        id="user-login"
+                                        placeholder="digite seu nome..."
+                                        value={userValue}
+                                        maxLength={50}
+                                        onChange={(e)=>setUserValue(e.target.value)}
+                                        is_required={true}
+                                />
                                 
-                                <div>
-                                        <img src={devImg} alt="Logo do projeto" />
-                                </div>
-                                <div className="inputs-session">
-                                        <InputComponent
-                                                labelText="Usuário" 
-                                                type="text"
-                                                name="username-login"
-                                                id="user-login"
-                                                placeholder="digite seu nome..."
-                                                value={userValue} 
-                                                onChange={(e)=>setUserValue(e.target.value)}
+                                <br />
+
+                                <InputComponent
+                                                labelText="Senha" 
+                                                type="password"
+                                                name="password-login"
+                                                id="pwd-login"
+                                                placeholder="digite sua senha..."
+                                                value={pwdValue} 
+                                                maxLength={16}
+                                                onChange={(e)=>setPwdValue(e.target.value)}
                                                 is_required={true}
                                         />
-                                        
-                                        <br />
-
-                                        <InputComponent
-                                                        labelText="Senha" 
-                                                        type="password"
-                                                        name="password-login"
-                                                        id="pwd-login"
-                                                        placeholder="digite sua senha..."
-                                                        value={pwdValue} 
-                                                        onChange={(e)=>setPwdValue(e.target.value)}
-                                                        is_required={true}
-                                                />
-                                        
-                                        
-                                </div>
-                                <div>
-                                        <Link to="/cadastro-user">Não Possuo Cadastro</Link>
-                                </div>
-                                <div>
-                                        <button type="submit">Entrar</button>
-                                </div>
+                                
+                                
                         </div>
-                        
-                        
+                        <div>
+                                <Link to="/cadastro-user">Não Possuo Cadastro</Link>
+                        </div>
+                        <div>
+                                <button type="submit">Entrar</button>
+                        </div>         
                 </form>
         )
 }
