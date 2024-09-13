@@ -5,6 +5,8 @@ import './styles/login.css'
 
 import devImg from '../static/images/dev-img.png'
 import InputComponent from "../components/input";
+import SelectBoxComponent from "../components/select";
+import RadioInput from "../components/radioInput";
 
 
 const createUser = () => {}
@@ -14,9 +16,10 @@ const CadastroUser = (props) => {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [area, setArea] = useState('')
-    const [isGestor, setIsGestor] = useState(false)
+    const [isGestor, setIsGestor] = useState('N')
     const [idGestor, setGestor] = useState(null)
     const [empresa, setEmpresa] = useState(null)
+
 
     return (
         <form onSubmit={createUser()} className="cadastro-container">
@@ -46,6 +49,32 @@ const CadastroUser = (props) => {
                         maxLength="50"
                         onChange={(e)=>setEmail(e.target.value)}
                         is_required={true}
+                    />
+                    <SelectBoxComponent
+                        label="Empresa"
+                        name="empresa-funcionario"
+                        onChange={(e)=>setArea(e.target.value)}
+                        required={true}
+                        options={[{value: 1, label: "area 1"}, {value: 2, label: "area 2"}, {value: 3, label: "area 3"}]}
+                    />
+                </div>
+                <div className="inputs-row">
+                <RadioInput
+                        label="Você é um gestor?"
+                        options={[
+                            { id: 'radio1', name: 'radioGroup', value: 'true', label: 'Sim' },
+                            { id: 'radio2', name: 'radioGroup', value: 'false', label: 'Não' }
+                            
+                        ]}
+                        selectedValue={isGestor}
+                        onChange={(e) => setIsGestor(e.target.value)}
+                    />
+                <SelectBoxComponent
+                        label="Gestor"
+                        name="gestor-funcionario"
+                        onChange={(e)=>setGestor(e.target.value)}
+                        required={true}
+                        options={[{value: 1, label: "Gestor 1"}, {value: 2, label: "Gestor 2"}, {value: 3, label: "Gestor 3"}]}
                     />
                 </div>
             </div>
