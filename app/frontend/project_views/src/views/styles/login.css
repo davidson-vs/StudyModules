@@ -27,12 +27,12 @@
 
   .inputs-session{
     width: 100%; /* Para ocupar todo o espaço disponível */
-    height: 12rem;
+    height: 9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
   }
   
   button {

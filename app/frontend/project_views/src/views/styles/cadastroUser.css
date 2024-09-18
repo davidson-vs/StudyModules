@@ -1,7 +1,6 @@
 body{
-    /* height: 100vh; */
-    width: 100vw;
-
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -15,17 +14,18 @@ body{
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 40vw;
+    width: 100%;
     border-radius: 2rem;
     padding: 2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 2rem;
-    min-height: 90%; /* Garante que o fundo cubra todos os inputs */
+    margin-top: 1rem;
+    /* height: calc(100vh - 2rem);  */
+    min-height: 80vh;
     justify-content: space-between; /* Distribui o conteúdo adequadamente */
 }
 
 .cadastro-container img{
-    width: 10rem;
+    width: 6rem;
     margin-bottom: 2rem;
 }
 
@@ -33,20 +33,22 @@ body{
     margin-bottom: 2rem;
 }
 
-.inputs-session{
-    width: 90%;
+.inputs-session {
+    width: 100%;
     height: 100%;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Define 3 colunas de largura igual */
+    grid-auto-rows: minmax(80px, auto); /* Ajusta a altura das linhas */
+    gap: 1rem;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
 }
 
-.inputs-row{
-    width: 100%;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    margin-bottom: 5px;
+.inputs-row {
+    display: contents; /* Para que os filhos sigam o comportamento do grid diretamente */
+}
+
+button[type="submit"] {
+    grid-column: span 3; /* Faz o botão ocupar a largura total das 3 colunas */
+    align-self: center;
 }

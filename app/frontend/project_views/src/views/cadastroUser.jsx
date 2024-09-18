@@ -15,11 +15,11 @@ const CadastroUser = (props) => {
 
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
-    const [isGestor, setIsGestor] = useState('N')
+    const [area, setArea] = useState('')
+    const [cargo, setCargo] = useState('N')
     const [idGestor, setGestor] = useState(null)
     const [empresa, setEmpresa] = useState(null)
     const [password, setPassword] = useState('')
-
 
     return (
         <form onSubmit={createUser()} className="cadastro-container">
@@ -46,11 +46,28 @@ const CadastroUser = (props) => {
                         name="empresa-funcionario"
                         onChange={(e)=>setEmpresa(e.target.value)}
                         required={true}
+                        options={[{value: 1, label: "empresa 1"}, {value: 2, label: "empresa 2"}, {value: 3, label: "empresa 3"}]}
+                    />
+
+                    <SelectBoxComponent
+                        label="Area"
+                        name="area-funcionario"
+                        onChange={(e)=>setArea(e.target.value)}
+                        required={true}
                         options={[{value: 1, label: "area 1"}, {value: 2, label: "area 2"}, {value: 3, label: "area 3"}]}
+                        style={{ gridColumn: "1 / 2", gridRow: "3" }}  
                     />
                 </div>
 
                 <div className="inputs-row">
+                    <SelectBoxComponent
+                        label="Cargo"
+                        name="cargo-funcionario"
+                        onChange={(e)=> setCargo(e.target.value)}
+                        required={true}
+                        options={[{value: 1, label: "ANALISTA JR"}, {value: 2, label: "ANALISTA PLENO"}, {value: 3, label: "ANALISTA SÊNIOR"}, {value: 4, label: "GESTOR"}]}
+                    />
+
                     <InputComponent 
                         type="email"
                         labelText="Email"
@@ -65,7 +82,7 @@ const CadastroUser = (props) => {
                         type="password"
                         labelText="Senha"
                         name="pwd-cadastro"
-                        placeholder="Digite seu e-mail"
+                        placeholder="Digite sua senha"
                         value={password}
                         maxLength="16"
                         onChange={(e)=>setPassword(e.target.value)}
@@ -74,29 +91,15 @@ const CadastroUser = (props) => {
                 </div>
 
                 <div className="inputs-row">
-                    <RadioInput
-                            label="Você é um gestor?"
-                            options={[
-                                { id: 'radio1', name: 'radioGroup', value: 'S', label: 'Sim' },
-                                { id: 'radio2', name: 'radioGroup', value: 'N', label: 'Não' }
-                                
-                            ]}
-                            selectedValue={isGestor}
-                            onChange={(e) => setIsGestor(e.target.value)}
-                        />
-                    { 
-                    isGestor === 'N' ? 
+                    {cargo === '4' ? 
                     <SelectBoxComponent
-                            label="Gestor"
-                            name="gestor-funcionario"
-                            onChange={(e)=>setGestor(e.target.value)}
-                            required={true}
-                            options={[{value: 1, label: "Gestor 1"}, {value: 2, label: "Gestor 2"}, {value: 3, label: "Gestor 3"}]}
-                        /> : <></>
-                    }
-                
+                        label="Gestor"
+                        name="gestor-funcionario"
+                        onChange={(e)=>setGestor(e.target.value)}
+                        required={true}
+                        options={[{value: 1, label: "Gestor 1"}, {value: 2, label: "Gestor 2"}, {value: 3, label: "Gestor 3"}]}
+                    /> : <></>}
                 </div>
-                <br />
                 <button type="submit">Casdastrar-se</button>
             </div>
         </form>

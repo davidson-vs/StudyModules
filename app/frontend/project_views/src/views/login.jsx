@@ -53,10 +53,11 @@ const Login = (props) => {
                                 
                         </div>
                         <div>
-                                <Link to="/cadastro-user">Não Possuo Cadastro</Link>
-                        </div>
-                        <div>
                                 <button type="submit">Entrar</button>
+                        </div>
+                        <br />
+                        <div>
+                                <Link to="/cadastro-user">Não Possuo Cadastro</Link>
                         </div>         
                 </form>
         )
