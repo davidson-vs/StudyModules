@@ -21,19 +21,27 @@ class Empresa(BaseModel):
     # Relação com Funcionarios
     funcionarios = relationship('Funcionario', back_populates='empresa')
 
+class Area(BaseModel):
+    __tablename__ = 'TbArea'
+
+    NmArea = Column(String(30), nullable=False, unique=True)
+    IdGestor = Column(ForeignKey('TbFuncionario.Id'), nullable=True)
+
+    funcionarios = relationship('Funcionario', back_populates='area')
+
 class Funcionario(BaseModel):
 
     __tablename__ = 'TbFuncionario'
     NmFuncionario = Column(String(50), nullable=False)
-    Area = Column(String(50), nullable=False)
+    
     Email = Column(String(50), nullable=False, unique=True)
     Senha = Column(Text, nullable=False)
-    IsGestor = Column(Boolean, default=False, nullable=False)
+    Cargo = Column(String(30), nullable=False) 
     IdGestor = Column(Integer, nullable=True)
     
     # Definindo a chave estrangeira que referencia TbEmpresas.Id
     IdEmpresa = Column(Integer, ForeignKey('TbEmpresa.Id'), nullable=False)
-    
+    IdArea = Column(ForeignKey('TbArea.Id'), nullable=False)
     # Relacionamento com a tabela Empresas
     empresa = relationship('Empresa', back_populates='funcionarios')
-
+    area = relationship('Area', back_populates='funcionarios')
